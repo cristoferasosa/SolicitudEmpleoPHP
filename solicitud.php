@@ -22,10 +22,7 @@ $NOMBRE = $_SESSION['NOMBRE'];
     <link rel="stylesheet" href="css/bootstrap.min.css">
 
  </head>
-<body>
-<?php
-echo "<pre>".print_r($_FILES,true)."</pre>";
-?>
+<body background="images/fondo-luz.jpg">
 <div class="contact1">
     <div class="card-body" align="center">
 

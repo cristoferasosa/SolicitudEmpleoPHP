@@ -23,14 +23,14 @@ if (!empty($archivo)) {
                     or die("Error in the consult.." . mysqli_error(conecta()));
         $resultado =mysqli_query(conecta(),$query);
         echo "Información grabada con exito!!";
-        echo '<script type="text/javascript"> window.location.href="index.html"; </script>';
+
 
         header('Content-type: application/pdf');
         header('Content-Disposition: inline; filename="' . $archivo['archivo']['name'] . '"');
         header('Content-Transfer-Encoding: binary');
         header('Accept-Ranges: bytes');
         echo file_get_contents($ruta);
-
+        echo '<script type="text/javascript"> window.location.href="index.html"; </script>';
     } catch (\Throwable $th) {
         echo'<script type="text/javascript">alert("Falló la transferencia"); 
                      window.location.href="www.google.com";   </script>';
