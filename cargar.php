@@ -3,12 +3,16 @@
 session_start();
 include "conexionbd.php";
 
+if (!isset($_SESSION['USUARIO_LOGUEADO'])){
+
+    echo'<script type="text/javascript">  alert("usted no está logueado"); window.location.href="index.html";   </script>';
+}
+
 $CORREO=strtoupper($_POST ['LOGIN']);
 $NOMBRECOMPLETO =strtoupper($_POST ['NOMBRECOMPLETO']);
 $MOTIVO = $_POST ['MOTIVO'];
-
-
 $archivo = $_FILES;
+var_dump($archivo);
 
 if (!empty($archivo)) {
     try {
@@ -22,21 +26,22 @@ if (!empty($archivo)) {
                     ('".$NOMBRECOMPLETO."','".$CORREO."','".$ruta."','". $archivo['archivo']['name']."','".$MOTIVO."')"
                     or die("Error in the consult.." . mysqli_error(conecta()));
         $resultado =mysqli_query(conecta(),$query);
-        echo "Información grabada con exito!!";
+
+       /*echo "Informacion Grabada con exito";*/
+
+            echo'<script type="text/javascript">alert("Informacion Grabada con exito"); 
+                     window.location.href="solicitud.php";   </script>';
 
 
-        header('Content-type: application/pdf');
-        header('Content-Disposition: inline; filename="' . $archivo['archivo']['name'] . '"');
-        header('Content-Transfer-Encoding: binary');
-        header('Accept-Ranges: bytes');
-        echo file_get_contents($ruta);
-        echo '<script type="text/javascript"> window.location.href="index.html"; </script>';
     } catch (\Throwable $th) {
         echo'<script type="text/javascript">alert("Falló la transferencia"); 
-                     window.location.href="www.google.com";   </script>';
+                     window.location.href="index.html";   </script>';
     }
-} else {
-    var_dump($archivo);
-}
-
+    } else {
+    echo'<script type="text/javascript">alert("Falló la transferencia"); 
+                     window.location.href="index.html";   </script>';
+    }
+mysqli_close(conecta());
 ?>
+
+

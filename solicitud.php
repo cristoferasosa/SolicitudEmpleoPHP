@@ -20,7 +20,11 @@ $NOMBRE = $_SESSION['NOMBRE'];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-
+    <style>
+        body{
+            color: #06055e;
+        }
+    </style>
  </head>
 <body background="images/fondo-luz.jpg">
 <div class="contact1">
@@ -69,12 +73,26 @@ $NOMBRE = $_SESSION['NOMBRE'];
                 <input type="file" name="archivo"  class="form-c" accept="application/pdf"/>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-8">
-                <br><input type="submit" value="Enviar" class="btn btn-success" name="Subirbtn"/>
+                <input type="submit" value="Enviar" class="btn btn-success" name="Subirbtn"/>
             </div>
         </form>
+        <div class="container">
+            <div class="panel panel-primary">
+                <div class="class">
+                    <form name="form1" id="form1" method="post" action="InfoPDFs/usuarios.php" enctype="multipart/form-data">
+                        <h3 class="text-center">Archivos Curriculums </h3>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Ir</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
+<div class="form-control">
+    <u><a href="index.html" ><strong>REGRESAR A LA PAGINA ANTERIOR</strong></a></u>
+</div>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </body>
